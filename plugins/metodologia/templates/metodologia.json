@@ -1,0 +1,46 @@
+{
+  "language": "es",
+  "deploy": {
+    "branch": "main",
+    "push_deploys": true,
+    "notes": "Push a main corre CI y, si pasa, deploya a producción."
+  },
+  "production": {
+    "logs": "Railway MCP: get-logs (servicios backend / frontend)",
+    "deploys": "Railway MCP: list-deployments",
+    "data": "railway ssh al backend + rails runner read-only"
+  },
+  "apps": [
+    {
+      "name": "backend",
+      "dir": "backend",
+      "stack": "rails",
+      "reviewer": "rails-reviewer",
+      "test_env": { "RAILS_ENV": "test" },
+      "test_env_hint": "levantá la DB de test (ej. make test-db)"
+    },
+    {
+      "name": "frontend",
+      "dir": "frontend",
+      "stack": "vitest",
+      "src": "src",
+      "reviewer": "react-reviewer"
+    }
+  ],
+  "protect": [],
+  "secrets": ["master\\.key", "credentials/[^ ]*\\.key"],
+  "qa": {
+    "base_url": "http://localhost:5173",
+    "health": ["http://localhost:5173", "http://localhost:3000/up"],
+    "start_cmd": "make dev",
+    "viewport": { "width": 1440, "height": 900 },
+    "themes": ["dark", "light"],
+    "theme_storage_key": "theme",
+    "login": {
+      "path": "/login",
+      "email_selector": "#email",
+      "password_selector": "#password",
+      "submit_selector": "button[type=\"submit\"]"
+    }
+  }
+}

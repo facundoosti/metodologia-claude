@@ -1,0 +1,34 @@
+schema: spec-driven
+
+context: |
+  <Qué es el proyecto, en 2–3 líneas.>
+  <Stack de cada app.>
+  <Convenciones que toda propuesta debe respetar (ej. forma de respuesta de la API).>
+  Escribí TODOS los artefactos en español (títulos, descripciones, escenarios, tareas).
+  Usá codegraph (`codegraph query`, `codegraph impact`) para explorar el alcance antes de proponer.
+
+rules:
+  proposal:
+    - Incluí una sección "Fuera de alcance".
+    - Indicá qué apps se tocan y si hay migraciones.
+  specs:
+    - Cada requerimiento tiene al menos un escenario GIVEN/WHEN/THEN verificable con un test.
+  design:
+    - Si hay cambios de DB, describí la migración (columnas, índices, backfill) y que sea reversible.
+    - Si hay endpoints nuevos, documentá ruta, params y forma de la respuesta.
+  tasks:
+    - Agrupá las tareas por app.
+    - Cada tarea de código incluye su test.
+    - Tareas chicas (≤ 2 horas); la última tarea es correr lint y tests completos de las apps tocadas.
+    - Si hay impacto visual, agregá una sección "QA visual" (escribir casos en qa.md, ejecutarlos con /metodologia:qa-visual, corregir hallazgos).
+
+operations:
+  apply:
+    guidance:
+      - Antes de marcar una tarea como hecha, corré los tests afectados y el linter de la app.
+      - Al terminar, usá el reviewer de cada app tocada (apps[].reviewer en .claude/metodologia.json) sobre el diff.
+      - Si hay impacto visual, después de los reviewers ejecutá /metodologia:qa-visual.
+  archive:
+    guidance:
+      - Antes de archivar, corré el subagente metodologia:spec-verifier y `openspec validate` sobre el change.
+      - Si el change tiene qa.md, todos los casos must deben estar en ✅ (o ⚠️ aceptados por el usuario).

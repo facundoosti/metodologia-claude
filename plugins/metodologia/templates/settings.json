@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "extraKnownMarketplaces": {
+    "metodologia-claude": {
+      "source": { "source": "github", "repo": "facundoosti/metodologia-claude" }
+    }
+  },
+  "enabledPlugins": {
+    "metodologia@metodologia-claude": true
+  },
+  "permissions": {
+    "allow": [
+      "Bash(codegraph *)",
+      "Bash(openspec *)",
+      "Bash(node tools/qa-runner/run.mjs*)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git show*)",
+      "Bash(git branch*)",
+      "mcp__codegraph__*",
+      "Bash(bundle exec rspec*)",
+      "Bash(bundle exec rubocop*)",
+      "Bash(npx vitest run*)",
+      "Bash(npm run lint*)"
+    ],
+    "ask": [
+      "Bash(git push*)",
+      "Bash(*db:migrate*)"
+    ],
+    "deny": [
+      "Read(./**/.env)",
+      "Read(./**/.env.local)",
+      "Read(./**/.env.*.local)",
+      "Read(./**/.env.development)",
+      "Read(./**/.env.production)",
+      "Read(./**/.env.test)",
+      "Bash(git push --force*)",
+      "Bash(git push -f*)",
+      "Bash(git reset --hard*)",
+      "Bash(*db:drop*)",
+      "Bash(*db:reset*)",
+      "Bash(rm -rf *)"
+    ]
+  }
+}

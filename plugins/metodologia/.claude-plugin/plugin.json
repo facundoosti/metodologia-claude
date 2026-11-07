@@ -1,0 +1,6 @@
+{
+  "name": "metodologia",
+  "version": "0.1.0",
+  "description": "Metodología de trabajo con Claude Code: OpenSpec + orquestación con sub-agentes (quien escribe no revisa), diagnóstico y fix de bugs, QA visual barato y guardrails por hooks. Se configura por proyecto con .claude/metodologia.json.",
+  "author": { "name": "facundoosti" }
+}

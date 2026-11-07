@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "metodologia-claude",
+  "description": "Metodología de trabajo con Claude Code: OpenSpec, orquestación con sub-agentes, bugs, QA visual y guardrails.",
+  "owner": { "name": "facundoosti" },
+  "plugins": [
+    {
+      "name": "metodologia",
+      "description": "Skills, agentes y hooks de la metodología (orquestar, bugbuster, quick-fix, qa-visual, handoff, reviewers y guardrails).",
+      "source": "./plugins/metodologia",
+      "category": "productivity"
+    }
+  ]
+}
